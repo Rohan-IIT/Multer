@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
+      rel="stylesheet"
+    />
+    <title>Multer Demo</title>
+
+    <style>
+      .form-header {
+        padding: 1rem;
+        margin-top: -3.13rem;
+        margin-bottom: 3rem;
+        color: #fff;
+        text-align: center;
+        border-radius: 0.125rem;
+        -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
+          0 4px 15px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
+          0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      }
+
+      .blue.accent-1 {
+        background-color: #82b1ff !important;
+      }
+
+      .btn-light-blue {
+        color: #fff;
+        background-color: #82b1ff !important;
+      }
+
+      .waves-effect {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      a.waves-effect,
+      a.waves-light {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div
+        class="d-flex justify-content-center align-items-center"
+        style="height: 75vh"
+      >
+        <div class="card w-50">
+          <div class="card-body">
+            <!-- Header -->
+            <div class="form-header blue accent-1">
+              <h3 class="mt-2"><i class="fas fa-envelope"></i> File Manager</h3>
+            </div>
+
+            <div class="text-center my-5">
+              <form
+                action="/upload"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <input type="file" name="file" required />
+                <button class="btn btn-light-blue" type="submit">Upload</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <div class="row justify-content-center">
+            <div class="col-md">
+              <table class="table align-middle mb-0 bg-white ">
+                <thead class="bg-light">
+                  <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Position</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% files.forEach(file => { %>
+
+                  <tr>
+                    <td><%= file %></td>
+                    <td>
+                      <a
+                        type="button"
+                        href="/download/<%= file %>"
+                        class="btn btn-link btn-sm btn-rounded"
+                        download
+                      >
+                        Download
+                      </a>
+                    </td>
+                    <td>
+                      <a class="btn btn-light-blue" href="/delete/<%= file %>"
+                        >Delete</a
+                      >
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
