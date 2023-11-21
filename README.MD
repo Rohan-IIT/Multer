@@ -1,54 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multer Project</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 2em;
-        }
-
-        h1, h2, h3 {
-            color: #333;
-        }
-
-        pre {
-            background-color: #f4f4f4;
-            padding: 1em;
-            overflow: auto;
-        }
-
-        code {
-            background-color: #f4f4f4;
-            padding: 0.2em;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 0.5em;
-        }
-
-        a {
-            color: #007acc;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-
-<body>
 
     <h1>Multer Project</h1>
 
@@ -123,7 +72,3 @@ MONGO_URI=your_mongo_database_uri</code></pre>
     <h2>License</h2>
 
     <p>This project is licensed under the MIT License - see the <a href="LICENSE.md" target="_blank">LICENSE.md</a> file for details.</p>
-
-</body>
-
-</html>
