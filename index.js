@@ -42,16 +42,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.post('/upload', (req, res) => {
-    upload.single('file')(req, res, (err) => {  
+    upload.single('file')(req, res, (err) => {
         var classNameVisible = "hide-form";
         const files = fs.readdirSync('uploads');
         if (err) {
             if (err.code === 'DUPLICATE_FILE') {
                 classNameVisible = "show-form";
+                res.render('index', { files, display: classNameVisible, filepath: originalName });
             }
         }
-
-        res.render('index', { files, display: classNameVisible, filepath: originalName });
+        else {
+            res.redirect('/');
+        }
     });
 });
 
@@ -68,7 +70,6 @@ app.get('/download/:filename', (req, res) => {
 
 
 app.get('/delete/:filename', (req, res) => {
-    console.log("akjsd", req.params.filename);
     const file = `./uploads/${req.params.filename}`;
     fs.unlinkSync(file);
     res.redirect('/');
