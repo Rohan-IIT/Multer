@@ -2,7 +2,8 @@
 
 This project demonstrates file upload, delete, and download features using Multer, along with duplicate file detection.
 
-[![Alt text](https://www.youtube.com/watch?v=_1keBT9evXQ)]
+
+[![Alt text](https://www.youtube.com/watch?v=_1keBT9evXQ/0.jpg)](https://www.youtube.com/watch?v=_1keBT9evXQ)
 
 ## Features
 
