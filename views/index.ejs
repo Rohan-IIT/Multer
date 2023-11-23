@@ -70,7 +70,7 @@
     <div class="container">
       <div
         class="d-flex justify-content-center align-items-center"
-        style="height: 75vh"
+        style="height: 50vh"
       >
         <div class="card w-50">
           <div class="card-body">
@@ -80,11 +80,11 @@
             </div>
 
             <div class="text-center my-5">
-              <div class="<%=display %> note note-danger m-3 p-3" >
+              <div class="<%=display %> note note-danger m-3 p-3">
                 <p class="d-inline">
                   Delete <u><%= filepath%> </u> to upload same file
                 </p>
-                <a class="btn btn-danger " href="/delete/<%= filepath %>"
+                <a class="btn btn-danger"  href="/delete/<%= filepath %>"
                   >Delete old file</a
                 >
               </div>
@@ -95,7 +95,7 @@
                 enctype="multipart/form-data"
               >
                 <input type="file" name="file" required />
-                <button class="btn btn-light-blue" type="submit">Upload</button>
+                <button class="btn btn-light-blue"  type="submit">Upload</button>
               </form>
             </div>
           </div>
@@ -107,39 +107,68 @@
       <div class="d-flex justify-content-center align-items-center">
         <div class="text-center">
           <div class="row justify-content-center">
-            <div class="col-md">
-              <table class="table align-middle mb-0 bg-white">
-                <thead class="bg-light">
-                  <tr>
-                    <th>Name</th>
-                    <th>Status</th>
-                    <th>Position</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% files.forEach(file => { %>
+            <div class="col-md my-5">
+              <form
+                id="fileOperationsForm"
+                action="/fileOperations"
+                method="post"
+              >
+                <table class="table align-middle mb-0 bg-white">
+                  <thead class="bg-light">
+                    <tr>
+                      <th>Select</th>
+                      <th>File Name</th>
+                      <th>Download</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- <form id="downloadForm" action="/downloadMultiple" method="get"> -->
 
-                  <tr>
-                    <td><%= file %></td>
-                    <td>
-                      <a
-                        type="button"
-                        href="/download/<%= file %>"
-                        class="btn btn-link btn-sm btn-rounded"
-                        download
-                      >
-                        Download
-                      </a>
-                    </td>
-                    <td>
-                      <a class="btn btn-danger" href="/delete/<%= file %>"
-                        >Delete</a
-                      >
-                    </td>
-                  </tr>
-                  <% }); %>
-                </tbody>
-              </table>
+                    <% files.forEach(file => { %>
+
+                    <tr>
+                      <td>
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="file3"
+                          name="files"
+                          value="<%= file %>"
+                        />
+                      </td>
+                      <td><%= file %></td>
+                      <td>
+                        <a
+                          type="button"
+                          href="/download/<%= file %>"
+                          class="btn btn-link btn-sm btn-rounded" 
+                          download
+                        >
+                          Download
+                        </a>
+                      </td>
+                      <td>
+                        <a class="btn btn-danger"  href="/delete/<%= file %>"
+                          >Delete</a
+                        >
+                      </td>
+                    </tr>
+
+                    <% }); %>
+                    <!-- <button type="submit">Download Selected Files</button> -->
+                  </tbody>
+                </table>
+                <h2 class="mt-5">Download or Delete Multiple Files</h2>
+
+                <select data-mdb-select-init name="action" required>
+                  <option value="download">Download</option>
+                  <option value="delete">Delete</option>
+                </select>
+                <label class="form-label select-label">Select Action</label>
+
+                <button type="submit" class="btn btn-success" >Perform Operation</button>
+              </form>
             </div>
           </div>
         </div>
