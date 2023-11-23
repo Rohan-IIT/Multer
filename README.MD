@@ -2,7 +2,8 @@
 
 This project demonstrates file upload, delete, and download features using Multer, along with duplicate file detection.
 
-[![Alt text](https://img.youtube.com/vi/_1keBT9evXQ/0.jpg)](https://www.youtube.com/watch?v=_1keBT9evXQ){:target="_blank"}
+Youtube Video 👇
+[![Alt text](https://img.youtube.com/vi/_1keBT9evXQ/0.jpg)](https://www.youtube.com/watch?v=_1keBT9evXQ)
 
 ## Features
 
@@ -19,6 +20,10 @@ This project demonstrates file upload, delete, and download features using Multe
 4. **Duplicate File Detection:**
    - Check for duplicate files before uploading.
    - Prevents uploading files with the same name to avoid conflicts.
+
+5. **Download and Delete Multiple Files:**
+   - Download selected files from the server.
+   - Delete selected files from the server.
 
 
 ## Prerequisites
@@ -53,3 +58,5 @@ This project demonstrates file upload, delete, and download features using Multe
     GET /download/:filename
     Download a file from the server.
 
+    POST /fileOperations
+    Download and delete multiple files from the server.
