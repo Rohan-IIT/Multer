@@ -4,8 +4,11 @@ const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up EJS as the view engine
 app.set('view engine', 'ejs');
@@ -66,6 +69,33 @@ app.get('/', (req, res) => {
 app.get('/download/:filename', (req, res) => {
     const filePath = path.join('uploads', req.params.filename);
     res.download(filePath);
+});
+
+
+// API to handle both download and delete operations
+app.post('/fileOperations', (req, res) => {
+    const action = req.body.action;
+    const selectedFiles = req.body.files || [];
+
+    if (!selectedFiles || !Array.isArray(selectedFiles)) {
+        return res.redirect('/');
+    }
+        if (action === 'download') {
+            // Download selected files
+            selectedFiles.forEach((filename) => {
+                const downloadPath = path.join('uploads', filename);
+                res.download(downloadPath);
+            });
+        } else if (action === 'delete') {
+            // Delete selected files (replace this with your actual deletion logic)
+            selectedFiles.forEach((filename) => {
+                const deletePath = path.join('uploads', filename);
+                fs.unlinkSync(deletePath);
+
+                console.log(`File deleted: ${deletePath}`);
+                res.redirect('/');
+            });
+        }
 });
 
 
